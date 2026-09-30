@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VideoBoost - Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: #10172a;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #5b8cff;
+    }
+
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    #userEmail {
+      color: #aeb6c8;
+      font-size: 14px;
+    }
+
+    .logout {
+      border: 1px solid #34415c;
+      background: transparent;
+      color: white;
+      padding: 9px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .welcome {
+      margin-bottom: 30px;
+    }
+
+    .welcome h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #9da8bd;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .stat {
+      background: #141b30;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .stat-title {
+      color: #9da8bd;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      background: #141b30;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .panel h2 {
+      margin-bottom: 10px;
+    }
+
+    .panel-description {
+      color: #9da8bd;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .upload-area {
+      border: 2px dashed #354563;
+      border-radius: 14px;
+      padding: 45px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .upload-area:hover {
+      border-color: #5b8cff;
+      background: rgba(91,140,255,.
