@@ -2,6 +2,7 @@ import os
 import uuid
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from fastapi.responses import FileResponse
 
 from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -90,7 +91,7 @@ def get_current_user(
 
 @app.get("/")
 def root():
-    return {"name": "VideoBoost API", "status": "online"}
+    return FileResponse("index.html")
 
 @app.get("/health")
 def health():
