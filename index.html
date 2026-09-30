@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VideoBoost</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #5b8cff;
+    }
+
+    .login {
+      color: white;
+      text-decoration: none;
+      border: 1px solid #5b8cff;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    .hero {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #5b8cff;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #b9c0d0;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      background: #5b8cff;
+      color: white;
+      text-decoration: none;
+      padding: 16px 30px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(91,140,255,.25);
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: 30px auto 80px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #141b30;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #aeb6c8;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #737c91;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 18px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Video<span>Boost</span></div>
+    <a class="login" href="#">Entrar</a>
+  </header>
+
+  <section class="hero">
+    <h1>Transforme seus vídeos com o <span>VideoBoost</span></h1>
+
+    <p>
+      Uma plataforma simples e poderosa para melhorar,
+      processar e preparar seus vídeos para publicação.
+    </p>
+
+    <a class="button" href="#">Começar agora</a>
+  </section>
+
+  <section class="features">
+
+    <div class="card">
+      <div class="icon">🎬</div>
+      <h2>Envie seu vídeo</h2>
+      <p>
+        Faça upload do seu vídeo diretamente pela plataforma.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h2>Processamento rápido</h2>
+      <p>
+        O VideoBoost processa seus arquivos através do nosso sistema online.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h2>Pronto para publicar</h2>
+      <p>
+        Prepare seus vídeos para redes sociais e outras plataformas.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 VideoBoost — Todos os direitos reservados.
+  </footer>
+
+</body>
+  </html>
