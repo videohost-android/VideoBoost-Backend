@@ -101,7 +101,7 @@ def login_page():
 
 @app.get("/dashboard.html")
 def dashboard_page():
-    return FileResponse("dashboard.html")
+    return FileResponse("painel.html")
 @app.get("/health")
 def health():
     return {"status": "ok"}
