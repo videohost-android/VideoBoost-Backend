@@ -95,6 +95,9 @@ def root():
 @app.get("/login.html")
 def login_page():
     return FileResponse("login.html")
+    @app.get("/dashboard.html")
+def dashboard_page():
+    return FileResponse("dashboard.html")
 @app.get("/health")
 def health():
     return {"status": "ok"}
