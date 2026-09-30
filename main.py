@@ -92,7 +92,9 @@ def get_current_user(
 @app.get("/")
 def root():
     return FileResponse("index.html")
-
+@app.get("/login.html")
+def login_page():
+    return FileResponse("login.html")
 @app.get("/health")
 def health():
     return {"status": "ok"}
