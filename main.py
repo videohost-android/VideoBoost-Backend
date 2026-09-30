@@ -92,10 +92,14 @@ def get_current_user(
 @app.get("/")
 def root():
     return FileResponse("index.html")
+
+
 @app.get("/login.html")
 def login_page():
     return FileResponse("login.html")
-    @app.get("/dashboard.html")
+
+
+@app.get("/dashboard.html")
 def dashboard_page():
     return FileResponse("dashboard.html")
 @app.get("/health")
