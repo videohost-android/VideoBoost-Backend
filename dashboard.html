@@ -132,9 +132,220 @@
       padding: 45px 20px;
       text-align: center;
       cursor: pointer;
-      transition: .2s;
     }
 
     .upload-area:hover {
       border-color: #5b8cff;
-      background: rgba(91,140,255,.
+      background: rgba(91,140,255,.08);
+    }
+
+    .upload-area strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .upload-area span {
+      color: #9da8bd;
+      font-size: 14px;
+    }
+
+    .tools {
+      display: grid;
+      gap: 12px;
+    }
+
+    .tool {
+      background: #10172a;
+      border: 1px solid #26334c;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .tool strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .tool span {
+      color: #8995aa;
+      font-size: 13px;
+    }
+
+    .jobs {
+      margin-top: 25px;
+    }
+
+    .jobs h2 {
+      margin-bottom: 15px;
+    }
+
+    #jobs {
+      color: #9da8bd;
+    }
+
+    @media (max-width: 850px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 0 20px;
+      }
+
+      #userEmail {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      Video<span>Boost</span>
+    </div>
+
+    <div class="user-area">
+      <div id="userEmail"></div>
+      <button class="logout" onclick="logout()">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h1>Bem-vindo ao VideoBoost</h1>
+      <p>Centralize seus vídeos e prepare sua operação em massa.</p>
+    </section>
+
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-title">Pendentes</div>
+        <div class="stat-number" id="pending">0</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Processando</div>
+        <div class="stat-number" id="running">0</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Concluídos</div>
+        <div class="stat-number" id="done">0</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Erros</div>
+        <div class="stat-number" id="errors">0</div>
+      </div>
+
+    </section>
+
+    <section class="main-grid">
+
+      <div class="panel">
+        <h2>Editor em massa</h2>
+
+        <p class="panel-description">
+          Envie vários vídeos para colocar sua produção na fila.
+        </p>
+
+        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+          <strong>Selecionar vídeos</strong>
+          <span>Você poderá enviar vários arquivos de uma vez.</span>
+        </div>
+
+        <input
+          id="fileInput"
+          type="file"
+          accept="video/*"
+          multiple
+          style="display:none"
+          onchange="uploadVideos()"
+        >
+      </div>
+
+      <div class="panel">
+        <h2>Ferramentas</h2>
+
+        <div class="tools">
+
+          <div class="tool">
+            <strong>Editor em massa</strong>
+            <span>Processamento de vários vídeos.</span>
+          </div>
+
+          <div class="tool">
+            <strong>Downloads</strong>
+            <span>Central de downloads em massa.</span>
+          </div>
+
+          <div class="tool">
+            <strong>Redes sociais</strong>
+            <span>Preparação para distribuição.</span>
+          </div>
+
+          <div class="tool">
+            <strong>Agendamento</strong>
+            <span>Organize suas publicações.</span>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel jobs">
+      <h2>Fila de vídeos</h2>
+      <div id="jobs">Carregando...</div>
+    </section>
+
+  </main>
+
+  <script>
+    const token = localStorage.getItem("videoboost_token");
+
+    if (!token) {
+      window.location.href = "/login.html";
+    }
+
+    const savedUser = localStorage.getItem("videoboost_user");
+
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      document.getElementById("userEmail").textContent = user.email;
+    }
+
+    async function loadJobs() {
+      try {
+        const response = await fetch("/api/jobs", {
+          headers: {
+            "Authorization": "Bearer " + token
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Sessão expirada");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("pending").textContent = data.stats.pending;
+       
