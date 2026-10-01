@@ -101,7 +101,7 @@ def login_page():
 
 @app.get("/dashboard.html")
 def dashboard_page():
-    return FileResponse(Path(__file__).resolve().parent / "painel.html")
+    return FileResponse(Path(__file__).resolve().parent / "dashboard.html")
 
 
 @app.get("/health")
