@@ -103,6 +103,7 @@ def login_page():
 def dashboard_page():
     return FileResponse(Path(__file__).resolve().parent / "painel.html")
 
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
