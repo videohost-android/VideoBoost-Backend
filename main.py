@@ -105,7 +105,6 @@ def dashboard_page():
 
 @app.get("/health")
 def health():
-    
     return {"status": "ok"}
 
 @app.post("/api/auth/register")
