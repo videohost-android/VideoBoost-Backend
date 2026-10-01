@@ -102,8 +102,10 @@ def login_page():
 @app.get("/dashboard.html")
 def dashboard_page():
     return FileResponse(Path(__file__).resolve().parent / "painel.html")
+
 @app.get("/health")
 def health():
+    
     return {"status": "ok"}
 
 @app.post("/api/auth/register")
