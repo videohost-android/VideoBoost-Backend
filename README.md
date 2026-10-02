@@ -1,35 +1,16 @@
-# VideoBoost Backend
+# VideoBoost
+Painel web para upload em massa, fila de vídeos, downloads individuais e em ZIP, edição em fila e integração social via OAuth.
 
-API FastAPI para o site VideoBoost.
+## Deploy
+- Runtime: Python
+- Build: pip install -r requirements.txt
+- Start: uvicorn main:app --host 0.0.0.0 --port $PORT
 
-## Endpoints principais
+## Variáveis opcionais
+SECRET_KEY
+DATABASE_URL
+META_CLIENT_ID
+META_CLIENT_SECRET
+META_REDIRECT_URI
 
-- `GET /health`
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `GET /api/jobs`
-- `POST /api/jobs`
-- `GET /api/operations/overview`
-
-## Rodar localmente
-
-```bash
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-Depois abra `/docs`.
-
-## Render
-
-Build:
-`pip install -r requirements.txt`
-
-Start:
-`uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-### Banco de dados
-Sem `DATABASE_URL`, o projeto usa SQLite localmente. Em Render Free, o disco local é efêmero; para dados de contas que precisam sobreviver a reinícios/redeploys, configure um PostgreSQL e defina `DATABASE_URL`.
-
-### Segurança
-Defina `SECRET_KEY` como um segredo forte em produção. Nunca coloque a chave diretamente no código.
+A integração real com Instagram/Meta exige um aplicativo configurado no Meta for Developers e permissões aprovadas. O processamento de edição de vídeo pode ser conectado a FFmpeg posteriormente.
