@@ -120,7 +120,7 @@ def painel_page():
 
 @app.get("/dashboard.html")
 def dashboard_page():
-    return FileResponse(BASE / "painel.html")
+    return FileResponse(BASE / "dashboard.html")
 
 @app.post("/api/register")
 def register(email: str = Form(...), password: str = Form(...), session: Session = Depends(db)):
