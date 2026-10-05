@@ -1,12 +1,116 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VideoBoost - Login</title>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VideoBoost - Login</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#0b1020;color:#fff;display:grid;place-items:center;min-height:100vh}.box{width:min(92%,420px);background:#151c32;padding:28px;border-radius:18px;box-sizing:border-box}input,button{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #34405f;box-sizing:border-box}button{background:#4f7cff;color:#fff;border:0;font-weight:700}h1{margin-top:0}
-</style></head><body><div class="box"><h1>VideoBoost</h1><p>Entre ou crie sua conta.</p>
-<input id="email" type="email" placeholder="E-mail"><input id="password" type="password" placeholder="Senha">
-<button onclick="login()">Entrar</button><button onclick="register()">Criar conta</button><p id="msg"></p></div>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b1020;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  min-height:100vh
+}
+.box{
+  width:min(92%,420px);
+  background:#151c32;
+  padding:28px;
+  border-radius:18px;
+  box-sizing:border-box
+}
+input,button{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border-radius:10px;
+  border:1px solid #34405f;
+  box-sizing:border-box
+}
+input{
+  background:#0f1629;
+  color:#fff
+}
+button{
+  background:#4f7cff;
+  color:#fff;
+  border:0;
+  font-weight:700
+}
+h1{margin-top:0}
+#msg{color:#aab4ce}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>VideoBoost</h1>
+<p>Entre ou crie sua conta.</p>
+
+<input id="email" type="email" placeholder="E-mail">
+<input id="password" type="password" placeholder="Senha">
+
+<button onclick="login()">Entrar</button>
+<button onclick="register()">Criar conta</button>
+
+<p id="msg"></p>
+</div>
+
 <script>
-async function send(url){const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});const d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.detail||'Erro');localStorage.setItem('videoboost_token',d.access_token);localStorage.setItem('videoboost_user',JSON.stringify(d.user));location.href='/dashboard.html'}
-async function login(){try{await send('/api/auth/login')}catch(e){document.getElementById('msg').textContent=e.message}}
-async function register(){try{await send('/api/auth/register')}catch(e){document.getElementById('msg').textContent=e.message}}
-</script></body></html>
+
+async function send(url){
+
+  const email=document.getElementById('email').value.trim();
+  const password=document.getElementById('password').value;
+
+  const form=new FormData();
+  form.append('email',email);
+  form.append('password',password);
+
+  const r=await fetch(url,{
+    method:'POST',
+    body:form
+  });
+
+  const d=await r.json().catch(()=>({}));
+
+  if(!r.ok){
+    throw Error(d.detail || 'Erro ao entrar');
+  }
+
+  localStorage.setItem('videoboost_token',d.token);
+  localStorage.setItem('videoboost_user',JSON.stringify(d.user));
+
+  location.href='/dashboard.html';
+}
+
+async function login(){
+
+  try{
+    document.getElementById('msg').textContent='Entrando...';
+    await send('/api/login');
+  }catch(e){
+    document.getElementById('msg').textContent=e.message;
+  }
+
+}
+
+async function register(){
+
+  try{
+    document.getElementById('msg').textContent='Criando conta...';
+    await send('/api/register');
+  }catch(e){
+    document.getElementById('msg').textContent=e.message;
+  }
+
+}
+
+</script>
+
+</body>
+</html>
